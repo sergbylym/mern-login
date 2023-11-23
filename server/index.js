@@ -13,6 +13,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+
+
+app.post("/register")
+
 const PORT = process.env.PORT || 5555
 
 app.listen(PORT, (error) => {
