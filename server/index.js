@@ -2,6 +2,8 @@ import  express from "express";
 import cors from "cors"
 import dotenv from "dotenv" 
 import mongoose from "mongoose";
+import { registerValidator } from "./helpers/validators.js";
+import { register } from "./controllers/UserController.js ";
 
 
 dotenv.config()
@@ -15,7 +17,7 @@ app.use(express.json())
 
 
 
-app.post("/register")
+app.post("/register", registerValidator,register)
 
 const PORT = process.env.PORT || 5555
 
