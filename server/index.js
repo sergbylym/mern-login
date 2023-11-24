@@ -2,7 +2,7 @@ import  express from "express";
 import cors from "cors"
 import dotenv from "dotenv" 
 import mongoose from "mongoose";
-import { registerValidator } from "./helpers/validators.js";
+import { registerValidator } from "./utility/validators.js";
 import { register } from "./controllers/UserController.js ";
 
 
