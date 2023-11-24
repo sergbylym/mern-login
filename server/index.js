@@ -3,7 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv" 
 import mongoose from "mongoose";
 import { registerValidator } from "./utility/validators.js";
-import { register } from "./controllers/UserController.js ";
+import { register } from "./controllers/UserController.js";
 import handleValidationErrors from "./middleware/handleValidationErrors.js";
 
 
@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGODB_URI).then(() => console.log("Connected to M
 
 const app = express()
 app.use(cors())
-app.use(express.json())
+app.use(express.json()) 
 
 
 
