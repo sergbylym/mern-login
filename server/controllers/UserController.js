@@ -83,7 +83,7 @@ export const login = async (req, res) => {
 
 
 
-export const user = async (req, res) => {
+export const getUser = async (req, res) => {
     try {
         const user = await UserModel.findById(req.userId)
         if(!user) {
@@ -94,7 +94,7 @@ export const user = async (req, res) => {
 
         const {passwordHash, ...userData} = user._doc
         res.status(200).json({
-            userData,
+            ... userData,
         })
     } catch (error) {
         console.log(error)

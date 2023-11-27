@@ -3,8 +3,9 @@ import cors from "cors"
 import dotenv from "dotenv" 
 import mongoose from "mongoose";
 import { authValidator } from "./utility/validators.js";
-import { login, register } from "./controllers/UserController.js";
+import { getUser, login, register } from "./controllers/UserController.js";
 import handleValidationErrors from "./middleware/handleValidationErrors.js";
+import isAuthenticated from "./middleware/isAuthenticated.js";
 
 
 dotenv.config()
@@ -20,6 +21,7 @@ app.use(express.json())
 
 app.post("/register", authValidator, handleValidationErrors, register)
 app.post("/login", authValidator, handleValidationErrors, login)
+app.get("/user", isAuthenticated, getUser)
 const PORT = process.env.PORT || 5555
 
 app.listen(PORT, (error) => {
