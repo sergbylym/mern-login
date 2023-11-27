@@ -2,8 +2,8 @@ import  express from "express";
 import cors from "cors"
 import dotenv from "dotenv" 
 import mongoose from "mongoose";
-import { registerValidator } from "./utility/validators.js";
-import { register } from "./controllers/UserController.js";
+import { authValidator } from "./utility/validators.js";
+import { login, register } from "./controllers/UserController.js";
 import handleValidationErrors from "./middleware/handleValidationErrors.js";
 
 
@@ -18,8 +18,8 @@ app.use(express.json())
 
 
 
-app.post("/register", registerValidator, handleValidationErrors, register)
-
+app.post("/register", authValidator, handleValidationErrors, register)
+app.post("/login", authValidator, handleValidationErrors, login)
 const PORT = process.env.PORT || 5555
 
 app.listen(PORT, (error) => {
