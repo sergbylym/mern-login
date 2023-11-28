@@ -3,7 +3,7 @@ import { Button, Typography } from "@mui/material";
 import { Modals } from "../../components";
 
 const Home = () => {
-  const isAuth = false;
+  const isAuth = true;
   const userEmail = "sergbylym@gmail.com";
   return (
     <div className={styles.container}>
