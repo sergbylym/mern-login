@@ -24,6 +24,8 @@ const Home = () => {
             <Button variant="contained" onClick={() => console.log("Register")}> Register</Button>
           </>
         )}
+
+        <Modals type= {"login"} handleModalClose={() => console.log("close")}/>
       </div>
     </div>
   );
