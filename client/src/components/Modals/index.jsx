@@ -1,13 +1,13 @@
 import { Box, Modal } from "@mui/material";
-
+import styles from './Modals.module.scss'  
 const Modals = (type, handleModalClose) => {
   return (
     <>
       <Modal open={type === "login"} onClose={handleModalClose}>
-      <Box> Login Modal</Box> 
+      <Box classname={styles.formContainer}> Login Modal</Box> 
       </Modal>
       <Modal type={type === "register"} onClose={handleModalClose}>
-        <Box>Register Modal</Box>
+        <Box classname={styles.formContainer}>Register Modal</Box>
       </Modal>
     </>
   );
