@@ -24,7 +24,7 @@ app.post("/login", authValidator, handleValidationErrors, login)
 app.get("/user", isAuthenticated, getUser)
 const PORT = process.env.PORT || 5555
 
-app.listen(PORT, (error) => {
+app.listen(PORT, (error) => { 
     if(error) {
         return console.log(error)
     }

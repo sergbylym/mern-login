@@ -1,11 +1,11 @@
+import { Home } from "./pages"
 
-
-function App() {
+const App = () => {
   
 
   return (
     <>
-     LOGIM FORM SYSTEM
+     <Home/>
     </>
   )
 }
