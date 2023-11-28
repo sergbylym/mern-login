@@ -12,7 +12,7 @@ const Home = () => {
           <Typography variant="h3">You are logged in !</Typography>
           <Typography variant="h3">User Email : {userEmail}</Typography>
         </>
-      )}
+      )}  
 
       <div className={styles.buttonsContainer}>
         {isAuth ? (
