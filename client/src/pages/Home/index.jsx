@@ -1,5 +1,6 @@
-import styles from "../Home/Home.module.scss";
+import styles from "./Home.module.scss";
 import { Button, Typography } from "@mui/material";
+import { Modals } from "../../components";
 
 const Home = () => {
   const isAuth = false;

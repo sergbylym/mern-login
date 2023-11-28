@@ -1,6 +1,6 @@
 
 
-const Modals = () => {
+const Modals = (type, handleModalClose) => {
   return (
     <div>Modals</div>
   )
