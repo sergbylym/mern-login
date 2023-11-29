@@ -3,7 +3,7 @@ import { Button, Typography } from "@mui/material";
 import { Modals } from "../../components";
 
 const Home = () => {
-  const isAuth = true;
+  const isAuth = false;
   const userEmail = "sergbylym@gmail.com";
   return (
     <div className={styles.container}>
@@ -26,7 +26,7 @@ const Home = () => {
           </>
         )}
 
-        <Modals type= {"login"} handleModalClose={() => console.log("close")}/>
+        <Modals type= {"login"} handleModalClose={() => console.log("close")} />
       </div>
     </div>
   );
