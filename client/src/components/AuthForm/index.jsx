@@ -8,13 +8,21 @@ const AuthForm = ({ formType, handleModalClose }) => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({ defaultValues: { email: "", password: "" }, mode: "onChange" });
-  const onSubmit = (data) => console.log(data);
+  
+  
+  const onSubmit = (data) => {
+    console.log(data);
+    handleModalClose();
+  }
+  
+  
+  
   return (
     <>
-      <Typography variant="h2" className={styles.title}>
+      <Typography sx={{mb: "16px"}} variant="h2" className={styles.title}>
         {isRegisterFormType ? "Register" : "Login"}
       </Typography>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form  className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <TextField
           label="Email"
           type="email"
@@ -28,7 +36,7 @@ const AuthForm = ({ formType, handleModalClose }) => {
           errors={Boolean(errors?.password?.message)}
           helperText={errors.password? "Password field is required" : ""}/>
 
-        <Button disabled={!isValid} variant="contain" type="submit">
+        <Button sx={{mt: "16px"}}  disabled={!isValid} variant="contain" type="submit">
           Submit
         </Button>
       </form>
