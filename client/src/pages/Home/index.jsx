@@ -2,10 +2,12 @@ import styles from "./Home.module.scss";
 import { Button, Typography } from "@mui/material";
 import { Modals } from "../../components";
 import { useState } from "react";
+import {useSelector} from "react-redux"
+import { isAuthSelector } from "../../redux/slices/auth";
 
 const Home = () => {
-  const isAuth =false;
-  const userEmail = "sergbylym@gmail.com";
+  const isAuth = useSelector(isAuthSelector);
+  const userEmail = useSelector(state => state.auth.userEmail)
 
   const [showModalType, setShowModalType] = useState(null)
     
