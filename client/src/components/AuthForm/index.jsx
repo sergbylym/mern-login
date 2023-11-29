@@ -36,7 +36,7 @@ const AuthForm = ({ formType, handleModalClose }) => {
           errors={Boolean(errors?.password?.message)}
           helperText={errors.password? "Password field is required" : ""}/>
 
-        <Button sx={{mt: "16px"}}  disabled={!isValid} variant="contain" type="submit">
+        <Button sx={{mt: "16px"}} disabled={!isValid} variant="contain" type="submit">
           Submit
         </Button>
       </form>
