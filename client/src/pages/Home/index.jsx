@@ -1,10 +1,14 @@
 import styles from "./Home.module.scss";
 import { Button, Typography } from "@mui/material";
 import { Modals } from "../../components";
+import { useState } from "react";
 
 const Home = () => {
-  const isAuth = false;
+  const isAuth =false;
   const userEmail = "sergbylym@gmail.com";
+
+  const [showModalType, setShowModalType] = useState(null)
+    
   return (
     <div className={styles.container}>
       {isAuth && (
@@ -21,12 +25,12 @@ const Home = () => {
           </Button>
         ) : (
           <>
-            <Button variant="contained" onClick={() => console.log("Log In")}> Log in</Button>
-            <Button variant="contained" onClick={() => console.log("Register")}> Register</Button>
+            <Button variant="contained" onClick={() => setShowModalType("login")}> Log in</Button>
+            <Button variant="contained" onClick={() => setShowModalType("register")}> Register</Button>
           </>
         )}
 
-        <Modals type= {"login"} handleModalClose={() => console.log("close")} />
+        <Modals type={showModalType} handleModalClose={() => setShowModalType(null)} />
       </div>
     </div>
   );
