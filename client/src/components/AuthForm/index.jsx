@@ -2,7 +2,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import styles from "./AuthForm.module.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { registration } from "../../redux/slices/auth";
+import { loginization, registration } from "../../redux/slices/auth";
 const AuthForm = ( {formType, handleModalClose }) => {
   const dispatch = useDispatch();
   const isRegisterFormType = formType === "register";
@@ -16,7 +16,7 @@ const AuthForm = ( {formType, handleModalClose }) => {
     console.log(values);
 
     const data = await dispatch(
-      isRegisterFormType ? registration(values) : console.log("login")
+      isRegisterFormType ? registration(values) : loginization(values)
     );
     if (!data.payload) {
       alert(`${isRegisterFormType ? "Register" : "Login"} failed`);
