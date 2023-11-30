@@ -2,15 +2,20 @@ import styles from "./Home.module.scss";
 import { Button, Typography } from "@mui/material";
 import  Modals from "../../components/Modals";
 import { useState } from "react";
-import {useSelector} from "react-redux"
-import { isAuthSelector } from "../../redux/slices/auth";
+import {useDispatch, useSelector} from "react-redux"
+import { isAuthSelector, logout } from "../../redux/slices/auth";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const isAuth = useSelector(isAuthSelector);
   const userEmail = useSelector(state => state.auth.userEmail)
 
   const [showModalType, setShowModalType] = useState(null)
-    
+    const handleLogoutClick = ( ) => {
+      if(window.confirm("Are you sure that you wont to logout ?")) {
+        dispatch(logout())
+      }
+    }
   return (
     <div className={styles.container}>
       {isAuth && (
