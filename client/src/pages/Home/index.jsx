@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 import { Button, Typography } from "@mui/material";
-import { Modals } from "../../components";
+import  Modals from "../../components/Modals";
 import { useState } from "react";
 import {useSelector} from "react-redux"
 import { isAuthSelector } from "../../redux/slices/auth";

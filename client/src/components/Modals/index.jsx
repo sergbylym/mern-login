@@ -1,7 +1,7 @@
 import { Box, Modal } from "@mui/material";
 import AuthForm from "../AuthForm";
 import styles from "./Modals.module.scss";
-const Modals = ({ type, handleModalClose }) => {
+const Modals = ( {type, handleModalClose} ) => {
   return (
     <>
       <Modal open={type === "login"} onClose={handleModalClose}>

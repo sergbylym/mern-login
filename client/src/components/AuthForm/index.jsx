@@ -3,8 +3,8 @@ import styles from "./AuthForm.module.scss";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { registration } from "../../redux/slices/auth";
-const AuthForm = ({ formType, handleModalClose }) => {
-  const dispatch = useDispatch;
+const AuthForm = ( {formType, handleModalClose }) => {
+  const dispatch = useDispatch();
   const isRegisterFormType = formType === "register";
   const {
     register,
@@ -37,7 +37,7 @@ const AuthForm = ({ formType, handleModalClose }) => {
           label="Email"
           type="email"
           {...register("email", { required: "Email field is required" })}
-          errors={Boolean(errors?.email?.message)}
+         /* errors={Boolean(errors?.email?.message)} */
           helperText={errors.email ? "Email field is required" : ""}
         />
         <TextField
@@ -47,7 +47,7 @@ const AuthForm = ({ formType, handleModalClose }) => {
             required: "Password field is required",
             minLength: 6,
           })}
-          errors={Boolean(errors?.password?.message)}
+         /* errors={Boolean(errors?.password?.message)} */
           helperText={errors.password ? "Password field is required" : ""}
         />
 
