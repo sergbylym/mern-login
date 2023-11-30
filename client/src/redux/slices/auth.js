@@ -6,6 +6,12 @@ import axios from "../../axiosAPI.js";
     const {data} = await axios.post('/register', params)
     return data;
 })
+
+export const loginization = createAsyncThunk("auth-registration", async (params) => {
+    const {data} = await axios.post('/login', params)
+    return data;
+})
+
 const initialState = {
   userEmail: null,
  status: "loading",
@@ -18,6 +24,7 @@ const authSlice = createSlice({
     reducers: {
         logout: (state) => {
             state.userEmail = null
+            window.localStorage.removeItem("token")
         },
     },
 
@@ -31,6 +38,18 @@ const authSlice = createSlice({
             state.status = "loaded"
         },
         [registration.rejected]: (state) => {
+            state.userEmail = null
+            state.status = "error"
+        },
+        [loginization.pending]: (state) => {
+            state.userEmail = null
+            state.status = "loading"
+        },
+        [loginization.fulfilled]: (state,action) => {
+            state.userEmail = action.payload.email
+            state.status = "loaded"
+        },
+        [loginization.rejected]: (state) => {
             state.userEmail = null
             state.status = "error"
         },

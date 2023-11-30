@@ -27,7 +27,7 @@ const Home = () => {
 
       <div className={styles.buttonsContainer}>
         {isAuth ? (
-          <Button variant="contained" onClick={() => console.log("Logout")}>
+          <Button variant="contained" onClick={handleLogoutClick}>
             Logout
           </Button>
         ) : (
