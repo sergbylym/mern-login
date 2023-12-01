@@ -1,21 +1,31 @@
 import styles from "./Home.module.scss";
 import { Button, Typography } from "@mui/material";
-import  Modals from "../../components/Modals";
-import { useState } from "react";
-import {useDispatch, useSelector} from "react-redux"
-import { isAuthSelector, logout } from "../../redux/slices/auth";
+import Modals from "../../components/Modals";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserData, isAuthSelector, logout } from "../../redux/slices/auth";
 
 const Home = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(isAuthSelector);
-  const userEmail = useSelector(state => state.auth.userEmail)
+  const userEmail = useSelector((state) => state.auth.userEmail);
 
-  const [showModalType, setShowModalType] = useState(null)
-    const handleLogoutClick = ( ) => {
-      if(window.confirm("Are you sure that you wont to logout ?")) {
-        dispatch(logout())
-      }
+  const [showModalType, setShowModalType] = useState(null);
+  
+  const handleLogoutClick = () => {
+    if (window.confirm("Are you sure that you wont to logout ?")) {
+      dispatch(logout());
     }
+  };
+
+
+
+   useEffect(() => {
+   if(window.localStorage.getItem("token")){
+    dispatch(fetchUserData())
+   }
+   }, [])
+
   return (
     <div className={styles.container}>
       {isAuth && (
@@ -23,7 +33,7 @@ const Home = () => {
           <Typography variant="h3">You are logged in !</Typography>
           <Typography variant="h3">User Email : {userEmail}</Typography>
         </>
-      )}  
+      )}
 
       <div className={styles.buttonsContainer}>
         {isAuth ? (
@@ -32,12 +42,27 @@ const Home = () => {
           </Button>
         ) : (
           <>
-            <Button variant="contained" onClick={() => setShowModalType("login")}> Log in</Button>
-            <Button variant="contained" onClick={() => setShowModalType("register")}> Register</Button>
+            <Button
+              variant="contained"
+              onClick={() => setShowModalType("login")}
+            >
+              {" "}
+              Log in
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => setShowModalType("register")}
+            >
+              {" "}
+              Register
+            </Button>
           </>
         )}
 
-        <Modals type={showModalType} handleModalClose={() => setShowModalType(null)} />
+        <Modals
+          type={showModalType}
+          handleModalClose={() => setShowModalType(null)}
+        />
       </div>
     </div>
   );
